@@ -1,5 +1,7 @@
 # Exercise 02
 
+![WorkflowResult](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
+
 [Github Link](https://github.com/franzfilip/mc-fh-cicd)
 
 ## Aufsetzen von Docker
