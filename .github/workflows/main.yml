@@ -1,5 +1,5 @@
 on:
-  pull_request:
+  push:
     branches:
       - master
       - main
@@ -7,7 +7,10 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+    env:
+      APP_DB_USERNAME: postgres
+      APP_DB_PASSWORD: example
+      APP_DB_NAME_TEST: test
     steps:
       - uses: actions/checkout@v2
       - name: Set up Go
@@ -17,11 +20,11 @@ jobs:
       - name: Install dependencies
         run: go mod download
       - name: Set up PostgreSQL
-        run: docker-compose -f postgres.yaml up -d
+        run: docker-compose -f postgres.yml up -d
       - name: Build
         run: go build -v
       - name: Run tests
         run: go test -v
       - name: Tear down PostgreSQL
-        run: docker-compose -f postgres.yaml down
+        run: docker-compose -f postgres.yml down
 
