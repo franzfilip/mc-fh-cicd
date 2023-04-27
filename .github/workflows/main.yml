@@ -7,7 +7,10 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+    env:
+      APP_DB_USERNAME: postgres
+      APP_DB_PASSWORD: example
+      APP_DB_NAME_TEST: test
     steps:
       - uses: actions/checkout@v2
       - name: Set up Go
