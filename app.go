@@ -186,6 +186,10 @@ func (a *App) getProductsWithHighestPrice(w http.ResponseWriter, r *http.Request
 	respondWithJSON(w, http.StatusOK, products)
 }
 
+func (a *App) test(w http.ResponseWriter, r *http.Request) {
+	respondWithJSON(w, http.StatusOK, "test")
+}
+
 func (a *App) initializeRoutes() {
 	a.Router.HandleFunc("/products", a.getProducts).Methods("GET")
 	a.Router.HandleFunc("/filterProducts", a.filterProducts).Methods("GET")
@@ -194,4 +198,5 @@ func (a *App) initializeRoutes() {
 	a.Router.HandleFunc("/product/{id:[0-9]+}", a.getProduct).Methods("GET")
 	a.Router.HandleFunc("/product/{id:[0-9]+}", a.updateProduct).Methods("PUT")
 	a.Router.HandleFunc("/product/{id:[0-9]+}", a.deleteProduct).Methods("DELETE")
+	a.Router.HandleFunc("/test", a.test).Methods("GET")
 }
