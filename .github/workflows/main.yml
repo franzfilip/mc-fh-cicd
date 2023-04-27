@@ -17,7 +17,7 @@ jobs:
       - name: Install dependencies
         run: go mod download
       - name: Set up PostgreSQL
-        run: docker-compose -f ../../postgres.yaml up -d
+        run: docker-compose -f ./postgres.yaml up -d
       - name: Build
         run: go build -v
       - name: Run tests
